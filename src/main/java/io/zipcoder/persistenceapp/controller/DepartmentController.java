@@ -12,19 +12,12 @@ public class DepartmentController {
     @Autowired
     private DepartmentRepository repository;
 
-    @GetMapping("/department/ping")
-    public String ping(){
-        System.out.println("received ping :");
-        return "hi There";
-    }
     @PostMapping("/department/")
     public Department createDepartment(@RequestBody Department dept){
-        System.out.println("received Post :");
         return repository.save(dept);
     }
     @PutMapping("/department/{emp_number}")
     public Department updateDepartment(@PathVariable long dept_number, @RequestBody Department department){
-        System.out.println("received Post :");
         department.setNumber(dept_number);
         return repository.save(department);
     }

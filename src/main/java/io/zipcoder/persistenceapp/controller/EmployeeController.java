@@ -12,19 +12,12 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository repository;
 
-    @GetMapping("/employee/ping")
-    public String ping(){
-        System.out.println("received ping :");
-        return "hi There";
-    }
     @PostMapping("/employee/")
     public Employee createEmployee(@RequestBody Employee employee){
-        System.out.println("received Post :");
         return repository.save(employee);
     }
     @PutMapping("/employee/{emp_number}")
     public Employee updateEmployee(@PathVariable long emp_number, @RequestBody Employee employee){
-        System.out.println("received Post :");
         employee.setEmployee_number(emp_number);
         return repository.save(employee);
     }
